@@ -73,7 +73,12 @@
       </button>
     </div>
     <br />
-    <p>{{ comments[game.fen()] }}</p>
+    <p
+      class="comments"
+      v-if="Object.entries(comments).length !== 0"
+    >
+      {{ comments[game.fen()] }}
+    </p>
   </div>
 </template>
 
@@ -334,5 +339,15 @@ span {
 .header {
   font-size: 1.2rem;
   padding: 7px;
+}
+
+.comments {
+  min-height: 100px;
+  overflow-y: auto;
+  border: 1px solid black;
+  width: 50%;
+  margin: auto;
+  padding: 7px;
+  text-align: left;
 }
 </style>
