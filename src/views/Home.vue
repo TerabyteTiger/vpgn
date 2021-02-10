@@ -7,8 +7,6 @@
       theme="purple"
       startPosition="4"
     />
-
-    <p>Second paragraph to test jumping</p>
   </div>
 </template>
 
