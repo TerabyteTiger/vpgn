@@ -25,7 +25,7 @@
       </div>
       <div class="notation">
         <div
-          v-for="(moveRow, index) in Math.floor(
+          v-for="(moveRow, index) in Math.ceil(
             moves.length / 2
           )"
           :key="index"
