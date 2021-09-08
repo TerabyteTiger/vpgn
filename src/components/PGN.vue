@@ -1,7 +1,7 @@
 <template>
   <div :class="theme">
     <!-- Add Header info here -->
-    <div class="header">
+    <div class="chessheader">
       <b>{{ whitePlayer }} vs. {{ blackPlayer }}</b>
       <br />
       {{ event }}
@@ -336,7 +336,7 @@ span {
   padding: 2px;
 }
 
-.header {
+.chessheader {
   font-size: 1.2rem;
   padding: 7px;
 }

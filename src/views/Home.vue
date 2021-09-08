@@ -4,7 +4,7 @@
       :pgnFile="pgnGame"
       whitePlayer="TerabyteTiger"
       event="Online Game"
-      theme="purple"
+      theme="standard"
       startPosition="4"
     />
   </div>
