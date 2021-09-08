@@ -163,7 +163,8 @@ export default {
       }
     },
     nextMove() {
-      this.currentMove = this.currentMove + 1;
+      // Prevent issues with user passing in string
+      this.currentMove = parseInt(this.currentMove) + 1;
       if (this.currentMove >= this.moves.length) {
         this.currentMove = this.moves.length;
       }
