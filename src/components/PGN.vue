@@ -4,23 +4,41 @@
     <div class="chessheader">
       <b>{{ whitePlayer }} vs. {{ blackPlayer }}</b>
       <br />
-      {{ event }}
+      <p>{{ event }}</p>
     </div>
     <div class="flex-board">
       <div class="board">
         <div class="row" v-for="r in 8" :key="r">
+          <div class="square file-label">
+            {{
+              ["8", "7", "6", "5", "4", "3", "2", "1"][
+                r - 1
+              ]
+            }}&nbsp;
+          </div>
           <div
             class="square"
             v-for="c in 8"
             :key="c"
             v-bind:class="[
               (c & 1 && r & 1) || (!(c & 1) && !(r & 1))
-                ? 'black'
-                : 'white',
+                ? 'white'
+                : 'black',
               getPiece(r, c),
               'piece'
             ]"
           ></div>
+        </div>
+        <div class="row">
+          <div class="square"></div>
+          <div class="square text-center">a</div>
+          <div class="square text-center">b</div>
+          <div class="square text-center">c</div>
+          <div class="square text-center">d</div>
+          <div class="square text-center">e</div>
+          <div class="square text-center">f</div>
+          <div class="square text-center">g</div>
+          <div class="square text-center">h</div>
         </div>
       </div>
       <div class="notation">
@@ -163,7 +181,6 @@ export default {
       }
     },
     nextMove() {
-      // Prevent issues with user passing in string
       this.currentMove = parseInt(this.currentMove) + 1;
       if (this.currentMove >= this.moves.length) {
         this.currentMove = this.moves.length;
@@ -231,19 +248,30 @@ export default {
   --lightSquares: hsl(200, 76%, 77%);
 }
 
+.muted {
+  --darkSquares: hsl(198, 21%, 68%);
+  --lightSquares: hsl(198, 22%, 82%);
+}
+
 .btn-flex {
   display: flex;
   justify-content: space-between;
-  width: 15%;
+  width: 300px;
   margin: 10px auto;
 }
+
+.btn-flex button {
+  font-size: 1.25rem;
+  padding: 0.25rem 0.75rem;
+}
+
 .flex-board {
   display: flex;
   justify-content: center;
 }
 .notation {
   width: 150px;
-  max-height: 300px;
+  max-height: 355px;
   overflow-y: auto;
   text-align: left;
   padding-left: 15px;
@@ -253,8 +281,8 @@ export default {
   flex-grow: 0;
   flex-shrink: 0;
   position: relative;
-  height: 300px;
-  width: 300px;
+  height: 400px;
+  width: 400px;
 }
 
 .black {
@@ -266,13 +294,13 @@ export default {
 }
 
 .square {
-  width: 12.5%;
+  width: 11.11%;
   height: 100%;
   float: left;
 }
 
 .row {
-  height: 12.5%;
+  height: 11.11%;
 }
 
 .piece {
@@ -346,9 +374,20 @@ span {
   min-height: 100px;
   overflow-y: auto;
   border: 1px solid black;
-  width: 50%;
+  width: 70%;
   margin: auto;
   padding: 7px;
   text-align: left;
+  margin-bottom: 1rem;
+}
+
+.file-label {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
 }
 </style>
