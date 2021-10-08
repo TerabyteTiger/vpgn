@@ -1,8 +1,5 @@
 <template>
   <div :class="theme">
-    <div class="btn-flex">
-      <button @click="flipBoard">Flip Board</button>
-    </div>
     <!-- Add Header info here -->
     <div class="chessheader">
       <b>{{ whitePlayer }} vs. {{ blackPlayer }}</b>
@@ -82,6 +79,7 @@
     </div>
 
     <div class="btn-flex">
+      <button @click="flipBoard">Flip Board</button>
       <button @click.prevent="goToMove(0)">
         |&lt;&lt;
       </button>
@@ -269,7 +267,7 @@ export default {
 .btn-flex {
   display: flex;
   justify-content: space-between;
-  width: 300px;
+  width: 400px;
   margin: 10px auto;
 }
 
