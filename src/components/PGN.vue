@@ -79,6 +79,7 @@
     </div>
 
     <div class="btn-flex">
+      <button @click="flipBoard">Flip Board</button>
       <button @click.prevent="goToMove(0)">
         |&lt;&lt;
       </button>
@@ -111,7 +112,8 @@ export default {
       moves: [],
       position: [],
       currentMove: 0,
-      comments: {}
+      comments: {},
+      isBoardFlipped: false
     };
   },
   props: {
@@ -154,7 +156,12 @@ export default {
   methods: {
     getPiece(row, col) {
       if (this.position.length == 0) return null;
-      let piece = this.position[row - 1][col - 1];
+      let piece;
+      if (this.isBoardFlipped) {
+        piece = this.position[9 - row - 1][col - 1];
+      } else {
+        piece = this.position[row - 1][col - 1];
+      }
       return piece === null ? "" : piece.color + piece.type;
     },
     loadPgn() {
@@ -201,6 +208,10 @@ export default {
         commentsObj[el.fen] = el.comment;
       });
       return commentsObj;
+    },
+    flipBoard() {
+      this.isBoardFlipped = !this.isBoardFlipped;
+      this.loadPgn();
     }
   }
 };
@@ -256,7 +267,7 @@ export default {
 .btn-flex {
   display: flex;
   justify-content: space-between;
-  width: 300px;
+  width: 400px;
   margin: 10px auto;
 }
 
