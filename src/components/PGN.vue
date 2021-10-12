@@ -1,5 +1,10 @@
 <template>
   <div :class="theme">
+    <div class="btn-flex">
+      <button @click="flipBoard">
+        Flip Board
+      </button>
+    </div>
     <!-- Add Header info here -->
     <div class="chessheader">
       <b>{{ whitePlayer }} vs. {{ blackPlayer }}</b>
